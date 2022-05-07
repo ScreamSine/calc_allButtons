@@ -1,19 +1,20 @@
-let firstNum = "";
-let secondNum = "";
-let operator = "";
-let result = false;
-
-const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-const operators = ["+", "-", "*", "/"];
-
 const display = document.querySelector(".result");
-const buttons = document.querySelector(".buttons");
+const buttons = document.querySelectorAll(".digit");
+const equals = document.querySelector(".equals");
 const allClear = document.querySelector(".C");
 
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function () {
+    display.value += buttons[i].innerHTML;
+  });
+}
+equals.addEventListener("click", function () {
+  let res = display.value;
+  if (res) {
+    display.value = eval(res);
+  }
+});
+
 allClear.addEventListener("click", function () {
-  firstNum = "";
-  secondNum = "";
-  operator = "";
-  result = false;
-  display.innerHTML = 0;
+  display.value = "";
 });
